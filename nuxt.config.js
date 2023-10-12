@@ -25,6 +25,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: "~/plugins/vuePersist", ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -44,6 +45,7 @@ export default {
     '@nuxtjs/emotion',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/axios',
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -53,6 +55,18 @@ export default {
     }
   },
 
+  axios: {
+    proxy: true,
+    debug: true,
+    progress: true
+  },
+  proxy: {
+    '/api/': {
+      target: 'http://ec2-18-188-216-25.us-east-2.compute.amazonaws.com:4000/api/', // Replace with your API server URL
+      pathRewrite: { '^/api/': '' },
+      changeOrigin: true,
+    },
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }

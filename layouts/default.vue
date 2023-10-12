@@ -25,6 +25,6 @@ export default {
     CColorModeProvider,
     CReset,
     CBox
-  }
+  },
 }
 </script>
