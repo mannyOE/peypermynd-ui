@@ -4,33 +4,14 @@
     w="100vw"
     py="2"
     borderBottom="1px"
-    min="40px"
+    minH="60px"
     alignItems="center"
     justify-content="space-between">
     <CBox>
-      <CIconButton
-        :display="{ base: 'block', md: 'none' }"
-        :variant="colorMode === 'light' ? 'gray.200' : 'gray.600'"
-        mr="3"
-        border="1px"
-        borderColor="gray.400"
-        :icon="colorMode === 'light' ? 'moon' : 'sun'"
-        :aria-label="`Switch to ${colorMode === 'light' ? 'dark' : 'light'
-          } mode`
-          "
-        @click="toggleColorMode" />
+
     </CBox>
     <CBox>
-      <CIconButton
-        :variant="colorMode === 'light' ? 'gray.200' : 'gray.600'"
-        mr="3"
-        border="1px"
-        borderColor="gray.400"
-        :icon="colorMode === 'light' ? 'moon' : 'sun'"
-        :aria-label="`Switch to ${colorMode === 'light' ? 'dark' : 'light'
-          } mode`
-          "
-        @click="toggleColorMode" />
+
     </CBox>
   </CBox>
 </template>

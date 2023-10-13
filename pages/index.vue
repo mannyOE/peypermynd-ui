@@ -6,8 +6,21 @@
       w="100vw"
       flex-dir="column"
       minH="100vh">
-      <Navbar />
-      <nuxt-child />
+      <CFlex v-if="isLoggedIn" justify-content="start">
+        <CBox :w="{ base: '0px', md: '18%' }" :d="{ base: 'none', md: 'block' }">
+          <Sidebar />
+        </CBox>
+        <CBox :w="{ base: '100%', md: '82%' }" :d="{ base: 'block' }">
+          <Navbar />
+          <nuxt-child />
+        </CBox>
+      </CFlex>
+
+      <CBox v-else :d="{ base: 'block' }">
+        <!-- <Navbar /> -->
+        <nuxt-child />
+      </CBox>
+
     </CBox>
   </div>
 </template>
@@ -56,7 +69,7 @@ export default {
       showModal: false,
       mainStyles: {
         dark: {
-          bg: 'gray.700',
+          bg: 'blue.700',
           color: 'whiteAlpha.900'
         },
         light: {
@@ -69,6 +82,9 @@ export default {
   computed: {
     colorMode () {
       return this.$store.getters['layout/getColorMode']
+    },
+    isLoggedIn () {
+      return this.$store.getters['auth/isLoggedIn']
     }
   },
   methods: {

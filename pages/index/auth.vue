@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <CFlex :px="{ base: '4', md: '20' }" py="10" gap="10" justify-content="space-between">
-      <CBox :w="{ md: '40%', base: '100%' }" boxShadow="lg" bg="black" rounded="lg" minH="80vh" p="10">
+      <CBox :w="{ md: '40%', base: '100%' }" boxShadow="lg" bg="black" rounded="lg" minH="600px" p="10">
         <CFlex direction="column" justify="space-between">
-          <CBox minH="75vh">
-            <Auth />
+          <CBox minH="550px">
+            <nuxt-child />
           </CBox>
-          <CFlex direction="column">
+          <CFlex h="50px" direction="column">
             <CBox textAlign="center" color="gold" fontWeight="bolder">
               PEYPERMYND
             </CBox>
