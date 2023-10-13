@@ -68,14 +68,10 @@
 <script lang="js">
 import { mapActions, mapGetters } from "vuex"
 import { required, email } from 'vuelidate/lib/validators'
-import {
-  CBox, CText, CInput, CFormControl, CFormLabel, CFormHelperText, CButton
-} from '@chakra-ui/vue'
 
 export default {
   name: 'IndexPage',
   components: {
-    CBox, CText, CInput, CFormControl, CFormLabel, CFormHelperText, CButton
   },
   data () {
     return {

@@ -24,16 +24,10 @@
 </template>
 
 <script lang="js">
-import {
-  CFlex,
-  CBox
-} from '@chakra-ui/vue'
 
 export default {
   name: 'IndexPage',
   components: {
-    CFlex,
-    CBox
   },
   data () {
     return {

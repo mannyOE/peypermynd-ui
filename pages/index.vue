@@ -7,10 +7,10 @@
       flex-dir="column"
       minH="100vh">
       <CFlex v-if="isLoggedIn" justify-content="start">
-        <CBox :w="{ base: '0px', md: '18%' }" :d="{ base: 'none', md: 'block' }">
+        <CBox :w="{ base: '0px', md: '25%' }" :d="{ base: 'none', md: 'block' }">
           <Sidebar />
         </CBox>
-        <CBox :w="{ base: '100%', md: '82%' }" :d="{ base: 'block' }">
+        <CBox :w="{ base: '100%', md: '75%' }" :d="{ base: 'block' }">
           <Navbar />
           <nuxt-child />
         </CBox>
@@ -26,50 +26,16 @@
 </template>
 
 <script lang="js">
-import {
-  CBox,
-  CButton,
-  CAvatarGroup,
-  CAvatar,
-  CAvatarBadge,
-  CModal,
-  CModalContent,
-  CModalOverlay,
-  CModalHeader,
-  CModalFooter,
-  CModalBody,
-  CModalCloseButton,
-  CIconButton,
-  CFlex,
-  CHeading
-} from '@chakra-ui/vue'
 
 export default {
   name: 'IndexPage',
-  components: {
-    CBox,
-    CButton,
-    CAvatarGroup,
-    CAvatar,
-    CAvatarBadge,
-    CModal,
-    CModalContent,
-    CModalOverlay,
-    CModalHeader,
-    CModalFooter,
-    CModalBody,
-    CModalCloseButton,
-    CIconButton,
-    CFlex,
-    CHeading
-  },
   inject: ['$chakraColorMode', '$toggleColorMode'],
   data () {
     return {
       showModal: false,
       mainStyles: {
         dark: {
-          bg: 'blue.700',
+          bg: 'blue.500',
           color: 'whiteAlpha.900'
         },
         light: {

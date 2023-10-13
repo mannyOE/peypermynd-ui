@@ -4,52 +4,30 @@
     py="2"
     borderBottom="1px"
     h="60px"
+    px="3"
     alignItems="center"
     justify-content="space-between">
     <CBox>
-
+      <c-button bg="transparent" :_hover="{ bg: 'transaprent' }" :_active="{ bg: 'transaprent' }"
+        :d="{ base: 'block', md: 'none' }">
+        <c-icon name="menu" />
+      </c-button>
     </CBox>
-    <CButton variant="primary" @click="logoutUser">Logout</CButton>
+    <c-box>
+      <c-button bg="transparent" :_hover="{ bg: 'transaprent' }" :_active="{ bg: 'transaprent' }"
+        :d="{ base: 'block', md: 'none' }">
+        <c-icon name="plus" />
+      </c-button>
+    </c-box>
   </CBox>
 </template>
 
 <script lang="js">
-import {
-  CBox,
-  CButton,
-  CAvatarGroup,
-  CAvatar,
-  CAvatarBadge,
-  CModal,
-  CModalContent,
-  CModalOverlay,
-  CModalHeader,
-  CModalFooter,
-  CModalBody,
-  CModalCloseButton,
-  CIconButton,
-  CFlex,
-  CHeading
-} from '@chakra-ui/vue'
 
 export default {
   name: 'IndexPage',
   components: {
-    CBox,
-    CButton,
-    CAvatarGroup,
-    CAvatar,
-    CAvatarBadge,
-    CModal,
-    CModalContent,
-    CModalOverlay,
-    CModalHeader,
-    CModalFooter,
-    CModalBody,
-    CModalCloseButton,
-    CIconButton,
-    CFlex,
-    CHeading
+
   },
   inject: ['$chakraColorMode', '$toggleColorMode'],
   data () {

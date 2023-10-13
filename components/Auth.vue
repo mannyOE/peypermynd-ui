@@ -15,14 +15,10 @@
 </template>
 
 <script lang="js">
-import {
-  CBox, CFlex, CText, CButton, CLink
-} from '@chakra-ui/vue'
 
 export default {
   name: 'IndexPage',
   components: {
-    CBox, CFlex, CButton, CText, CLink
   },
   data () {
     return {
