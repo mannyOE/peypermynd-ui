@@ -63,7 +63,7 @@ export default {
   },
   proxy: {
     '/api/': {
-      target: 'http://ec2-18-188-216-25.us-east-2.compute.amazonaws.com:4000/api/', // Replace with your API server URL
+      target: process.env.BASE_URL + '/api/', // Replace with your API server URL
       pathRewrite: { '^/api/': '' },
       changeOrigin: true,
     },
