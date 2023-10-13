@@ -36,6 +36,39 @@ export const actions = actionTree(
   {
     logout: ({ commit }) => {
       commit('logout')
+    },
+    handleError: function ({ commit }, error) {
+      if (error.response) {
+        // The error has a response object
+        const { data, status } = error.response
+        console.error(`Request failed with status ${status}`)
+        console.error('Error data:', data)
+
+        // You can handle different HTTP status codes here
+        if (status === 401) {
+          // Unauthorized (e.g., invalid credentials)
+          console.error('Unauthorized. Please check your credentials.')
+        } else if (status === 500) {
+          // Internal Server Error
+          console.error('Internal Server Error. Please try again later.')
+        }
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('No response received. The server may be down.')
+      } else {
+        // Something else happened (e.g., an error in the request configuration)
+        console.error('Request error:', error.message)
+      }
+    },
+    loginAction: async function ({ commit, dispatch }, payload) {
+      try {
+        const result = await this.$axios.post('/api/auth/login', payload)
+        const { data: { user, token } } = result
+        commit('setUser', user)
+        commit('setUserToken', token)
+      } catch (error) {
+        dispatch('handleError', error)
+      }
     }
   }
 )
