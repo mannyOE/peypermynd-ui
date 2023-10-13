@@ -46,8 +46,7 @@ export default {
     '@nuxtjs/emotion',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/axios',
-    '@nuxtjs/netlify-files',
+    '@nuxtjs/axios'
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -56,39 +55,11 @@ export default {
       lang: 'en'
     }
   },
-  netlifyFiles: {
-    /* module options */
-    netlifyToml: {
-      build: {
-        environment: { FOO: process.env.FOO }
-      },
-      headers: [
-        {
-          for: '/*',
-          values: { 'X-XSS-Protection': '1; mode=block' }
-        }
-      ],
-      redirects: [
-        {
-          from: '/api/',
-          to: process.env.BASE_URL + '/api/',
-          status: 302
-        }
-      ]
-    }
-  },
 
   axios: {
-    proxy: true,
+    baseURL: process.env.BASE_URL,
     debug: true,
     progress: true
-  },
-  proxy: {
-    '/api/': {
-      target: process.env.BASE_URL + '/api/', // Replace with your API server URL
-      pathRewrite: { '^/api/': '' },
-      changeOrigin: true,
-    },
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
