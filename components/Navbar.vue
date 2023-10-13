@@ -1,18 +1,15 @@
 <template>
   <CBox
     d="flex"
-    w="100vw"
     py="2"
     borderBottom="1px"
-    minH="60px"
+    h="60px"
     alignItems="center"
     justify-content="space-between">
     <CBox>
 
     </CBox>
-    <CBox>
-
-    </CBox>
+    <CButton variant="primary" @click="logoutUser">Logout</CButton>
   </CBox>
 </template>
 
@@ -81,6 +78,10 @@ export default {
       } else {
         this.$store.commit('layout/setColorMode', 'dark')
       }
+    },
+    logoutUser () {
+      this.$store.commit('auth/logout')
+      this.$router.push("/auth/login")
     }
   }
 }

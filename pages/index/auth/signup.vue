@@ -107,12 +107,13 @@
             placeholder="solomon223" />
         </CFormControl>
       </CBox>
-      <CButton py="5" :_focus="{ outline: 'none' }" :isDisabled="$v.payload.$invalid" mt="5" variant-color="blue"
+      <CButton type="submit" py="5" :_focus="{ outline: 'none' }" :isDisabled="$v.payload.$invalid" mt="5"
+        variant-color="blue"
         w="100%">
         Register
       </CButton>
       <CFlex :w="{ base: '100%', md: '60%' }" my="4" gap="2">
-        Have an account already? <c-link to="/auth/login" as="nuxt-link">
+        Have an account already? <c-link color="blue.500" to="/auth/login" as="nuxt-link">
           Login
         </c-link>
       </CFlex>
@@ -121,6 +122,7 @@
 </template>
 
 <script lang="js">
+import { mapActions } from "vuex"
 import { required, email } from 'vuelidate/lib/validators'
 import {
   CBox, CText, CInput, CFormControl, CFormLabel, CFormHelperText, CButton
@@ -135,6 +137,7 @@ export default {
     return {
       show: false,
       errors: {},
+      isSubmitting: false,
       payload: {
         email: "",
         password: "",
@@ -159,14 +162,13 @@ export default {
 
   },
   methods: {
-    submitForm () {
-      this.$v.formData.$touch()
-
-      if (!this.$v.formData.$invalid) {
-        // Form is valid, submit the data
-        // Perform your API request or other actions here
-      } else {
-        // Form is invalid, display an error message or take appropriate action
+    ...mapActions('auth', ['registerAccountAction']),
+    async submitForm () {
+      this.isSubmitting = true
+      const done = await this.registerAccountAction(this.payload)
+      this.isSubmitting = false
+      if (done) {
+        this.$router.push("/auth/login")
       }
     },
   }

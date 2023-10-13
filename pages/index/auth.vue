@@ -17,7 +17,7 @@
         </CFlex>
       </CBox>
       <CBox w="60%" :d="{ base: 'none', md: 'block' }">
-        Image stays here
+
       </CBox>
     </CFlex>
   </div>

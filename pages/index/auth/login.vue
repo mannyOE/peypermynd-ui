@@ -50,17 +50,23 @@
           </c-input-group>
         </CFormControl>
       </CBox>
-      <CButton py="5" type="submit" :_focus="{ outline: 'none' }" :isDisabled="$v.payload.$invalid" mt="5"
+      <CButton :isLoading="isSubmitting" py="5" type="submit" :_focus="{ outline: 'none' }"
+        :isDisabled="$v.payload.$invalid" mt="5"
         variant-color="blue"
         w="100%">
         Login
       </CButton>
+      <CFlex :w="{ base: '100%', md: '80%' }" my="4" gap="2">
+        Don't have an account already? <c-link color="blue.500" to="/auth/signup" as="nuxt-link">
+          Register here
+        </c-link>
+      </CFlex>
     </CFlex>
   </form>
 </template>
 
 <script lang="js">
-import { mapActions } from "vuex"
+import { mapActions, mapGetters } from "vuex"
 import { required, email } from 'vuelidate/lib/validators'
 import {
   CBox, CText, CInput, CFormControl, CFormLabel, CFormHelperText, CButton
@@ -75,10 +81,22 @@ export default {
     return {
       show: false,
       errors: {},
+      isSubmitting: false,
       payload: {
         email: "",
         password: ""
       }
+    }
+  },
+  watch: {
+    getError (val) {
+      this.$toast({
+        title: 'Failed',
+        description: val,
+        status: 'error',
+        duration: 2000,
+        isClosable: false
+      })
     }
   },
   validations () {
@@ -90,12 +108,17 @@ export default {
     }
   },
   computed: {
-
+    ...mapGetters('errors', ['getError'])
   },
   methods: {
     ...mapActions('auth', ['loginAction']),
     async submitForm () {
-      await this.loginAction(this.payload)
+      this.isSubmitting = true
+      const done = await this.loginAction(this.payload)
+      this.isSubmitting = false
+      if (done) {
+        this.$router.push('/app')
+      }
     },
   }
 }
