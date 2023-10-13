@@ -47,12 +47,34 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/axios',
+    '@nuxtjs/netlify-files',
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
       lang: 'en'
+    }
+  },
+  netlifyFiles: {
+    /* module options */
+    netlifyToml: {
+      build: {
+        environment: { FOO: process.env.FOO }
+      },
+      headers: [
+        {
+          for: '/*',
+          values: { 'X-XSS-Protection': '1; mode=block' }
+        }
+      ],
+      redirects: [
+        {
+          from: '/api/',
+          to: process.env.BASE_URL + '/api/',
+          status: 302
+        }
+      ]
     }
   },
 
