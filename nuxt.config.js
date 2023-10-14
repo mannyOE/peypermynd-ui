@@ -55,11 +55,17 @@ export default {
       lang: 'en'
     }
   },
-
   axios: {
-    baseURL: process.env.BASE_URL,
+    proxy: true,
     debug: true,
     progress: true
+  },
+  proxy: {
+    '/api/': {
+      target: process.env.BASE_URL + '/api/', // Replace with your API server URL
+      pathRewrite: { '^/api/': '' },
+      changeOrigin: true,
+    },
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
