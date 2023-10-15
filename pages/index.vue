@@ -45,6 +45,81 @@ export default {
       }
     }
   },
+  head: {
+    title: "Talk with your documents - Peypermynd",
+    link: [
+      {
+        rel: "canonical",
+        href: window.location.origin
+      }
+    ],
+    meta: [
+      {
+        hid: "description",
+        name: "description",
+        content:
+          "Have a conversation with your documents. Pdfs, Csvs, xlsx, docx, pptx"
+      },
+      {
+        hid: "keywords",
+        name: "keywords",
+        content:
+          "documents, ai, pdfs, csvs, xslx, docx, pptx"
+      },
+      {
+        hid: "robots",
+        name: "robots",
+        content: "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
+      },
+      {
+        hid: "publisher",
+        name: "publisher",
+        content: "Peypermynd"
+      },
+      {
+        property: "og:type",
+        content: "website"
+      },
+      {
+        property: "og:url",
+        content: location.origin
+      },
+      {
+        property: "og:title",
+        content: "Talk with your documents - Peypermynd"
+      },
+      {
+        property: "og:description",
+        content:
+          "Have a conversation with your documents. Pdfs, Csvs, xlsx, docx, pptx"
+      },
+      {
+        property: "og:image",
+        content: "https://kippa.africa/images/logos/logo-icon-sm.png"
+      },
+      {
+        property: "twitter:card",
+        content: "summary_large_image"
+      },
+      {
+        property: "twitter:url",
+        content: location.origin
+      },
+      {
+        property: "twitter:title",
+        content: "Talk with your documents - Peypermynd"
+      },
+      {
+        property: "twitter:description",
+        content:
+          "Have a conversation with your documents. Pdfs, Csvs, xlsx, docx, pptx"
+      },
+      {
+        property: "twitter:image",
+        content: "https://kippa.africa/images/logos/logo-icon-sm.png"
+      }
+    ]
+  },
   computed: {
     colorMode () {
       return this.$store.getters['layout/getColorMode']
