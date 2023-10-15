@@ -11,7 +11,7 @@ const ls = new SecureLS({
 const vuexPersist: Plugin = ({ store }) => {
   createPersistedState({
     key: 'peypermynd',
-    paths: ['auth', 'layout'],
+    paths: ['auth', 'layout', 'history'],
     storage: {
       getItem: (key) => ls.get(key),
       setItem: (key, value) => ls.set(key, value),

@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <CFlex :px="{ base: '4', md: '20' }" py="10" gap="10" justify-content="space-between">
-      <CBox :w="{ md: '40%', base: '100%' }" boxShadow="lg" bg="black" rounded="lg" minH="80vh" p="10">
+      <CBox v-if="!isLoggedIn" :w="{ md: '40%', base: '100%' }" boxShadow="lg" bg="blue.800" rounded="lg" minH="80vh"
+        p="10">
         <CFlex direction="column" justify="space-between">
           <CBox minH="75vh">
             <Auth />
@@ -34,7 +35,9 @@ export default {
     }
   },
   computed: {
-
+    isLoggedIn () {
+      return this.$store.getters['auth/isLoggedIn']
+    }
   },
   methods: {
   }

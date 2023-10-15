@@ -4,6 +4,7 @@
     placement="bottom">
     <c-popover-trigger>
       <CIconButton
+        aria-label="user account"
         :variant-color="colorMode === 'light' ? 'gray.200' : 'gray.600'"
         :icon="'user'"
         :_focus="{ outline: 'none' }"
